@@ -11,7 +11,7 @@ class PropertyStatusTableSeeder extends Seeder
      */
     public function run()
     {
-        App\PropertyStatus::insert([
+        App\Models\PropertyStatus::insert([
         		[
         			'property_status_name' => 'Available',
         			'property_status_description' => 'The property/unit is available for occupants.',

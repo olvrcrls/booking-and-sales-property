@@ -11,7 +11,7 @@ class UserTypeTableSeeder extends Seeder
      */
     public function run()
     {
-        App\UserType::insert([
+        App\Models\UserType::insert([
         		[
         			'user_type_name' => 'Administrator'
         		],

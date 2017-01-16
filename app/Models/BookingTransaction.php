@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,5 +11,8 @@ class BookingTransaction extends Model
     protected $guarded = [];
     public $dates = [
     	'created_date', 'modified_date'
+    ];
+    protected $casts = [
+    	'booking_transaction_cancelled' => 'boolean',
     ];
 }

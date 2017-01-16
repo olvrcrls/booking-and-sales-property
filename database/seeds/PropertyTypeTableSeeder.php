@@ -11,7 +11,7 @@ class PropertyTypeTableSeeder extends Seeder
      */
     public function run()
     {
-        App\PropertyType::insert([
+        App\Models\PropertyType::insert([
         		[
         			'property_type_name' => 'Rental',
         			'created_by' => 1

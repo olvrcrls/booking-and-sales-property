@@ -11,7 +11,7 @@ class RegionTableSeeder extends Seeder
      */
     public function run()
     {
-        App\Region::insert([
+        App\Models\Region::insert([
         		[
         			'region_name' => 'National Capital Region (NCR)',
                     'created_by' => 1

@@ -36,4 +36,12 @@ class LoginController extends Controller
     {
         $this->middleware('guest', ['except' => 'logout']);
     }
+    /**
+    * Setting what username is used for the authentication
+    * for this boiler plate; User's e-mail address is used.
+    */
+    public function username()
+    {
+        return 'user_email';
+    }
 }

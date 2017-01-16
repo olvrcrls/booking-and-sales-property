@@ -11,7 +11,7 @@ class CityTableSeeder extends Seeder
      */
     public function run()
     {
-        App\City::insert([
+        App\Models\City::insert([
         		[
         			'city_name' => 'Caloocan City',
         			'city_zip_code' => '1400',

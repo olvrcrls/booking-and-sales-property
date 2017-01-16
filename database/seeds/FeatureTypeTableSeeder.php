@@ -11,7 +11,7 @@ class FeatureTypeTableSeeder extends Seeder
      */
     public function run()
     {
-        App\FeatureType::insert([
+        App\Models\FeatureType::insert([
         		[
         			'feature_type_name' => 'Additional Information',
         			'feature_type_description' => 'Additional information about the property that will help in promoting/advertising.',

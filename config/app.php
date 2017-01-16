@@ -12,7 +12,8 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'Laravel',
+    'name' => 'Fandom Properties',
+    'author' => 'Oliver Carlos',
 
     /*
     |--------------------------------------------------------------------------
@@ -227,5 +228,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
     ],
+
+    'fb_app_id' => env('FB_APP_ID', ''),
 
 ];

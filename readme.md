@@ -14,10 +14,10 @@
 - <b>`For Development`</b> : open two terminals, on the first terminal run `php artisan serve` and for the second terminal run `gulp watch`, wait for the browser to open a tab that host *locahost:3000*
 
 
-## Screenshots
+<!-- ## Screenshots
 <img src="/screenshots/home.png" alt="home_page"> <br>
 <img src="/screenshots/property_list.png" alt="home_page"> <br>
-<img src="/screenshots/property.png" alt="home_page">
+<img src="/screenshots/property.png" alt="home_page"> -->
 
 > Creator: Oliver P. Carlos
 

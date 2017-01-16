@@ -29,6 +29,7 @@ class CreateOnlineServiceFeesTable extends Migration
             $table->integer('modified_by')->unsigned()->index()->nullable();
             $table->foreign('modified_by')->references('user_id')->on('users');
         });
+        Schema::enableForeignKeyConstraints();
     }
 
     /**
