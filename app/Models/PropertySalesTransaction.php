@@ -14,6 +14,11 @@ class PropertySalesTransaction extends Model
 
     public function clients()
     {
-    	return $this->belongsTo(App\Models\Client::class, 'property_sales_transaction_client', 'property_sales_transaction_client');
+    	return $this->belongsTo(App\Models\Client::class, 'property_sales_client', 'property_sales_client');
+    }
+
+    public function properties()
+    {
+    	return $this->hasOne(App\Models\Property::class, 'property_sales_property', 'property_sales_property');
     }
 }

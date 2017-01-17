@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePropertySalesTransactionsTable extends Migration
+class CreateAmenitiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class CreatePropertySalesTransactionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('property_sales_transactions', function (Blueprint $table) {
-            $table->increments('property_sales_transaction_id');
-            $table->integer('property_sales_client')->unsigned()->index();
-            $table->foreign('property_sales_client')->references('client_id')->on('clients');
-            $table->integer('property_sales_property')->unsigned()->index();
-            $table->foreign('property_sales_property')->references('property_id')->on('properties');
-            $table->decimal('property_sales_transaction_price', 15, 2)->unsigned();
+        Schema::create('amenities', function (Blueprint $table) {
+            $table->increments('amenity_id');
+            $table->string('amenity_name', 255)->unique();
+            $table->text('amenity_description')->nullable();
+            $table->boolean('amenity_active')->default(true);
             $table->datetime('created_date')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->datetime('modified_date')->nullable();
+            $table->integer('created_by')->unsigned()->index();
+            $table->foreign('created_by')->references('user_id')->on('users');
             $table->integer('modified_by')->unsigned()->index()->nullable();
             $table->foreign('modified_by')->references('user_id')->on('users');
         });
@@ -35,6 +35,6 @@ class CreatePropertySalesTransactionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('property_sales_transactions');
+        Schema::dropIfExists('amenities');
     }
 }

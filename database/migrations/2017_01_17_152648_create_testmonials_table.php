@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePropertySalesTransactionsTable extends Migration
+class CreateTestmonialsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreatePropertySalesTransactionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('property_sales_transactions', function (Blueprint $table) {
-            $table->increments('property_sales_transaction_id');
-            $table->integer('property_sales_client')->unsigned()->index();
-            $table->foreign('property_sales_client')->references('client_id')->on('clients');
-            $table->integer('property_sales_property')->unsigned()->index();
-            $table->foreign('property_sales_property')->references('property_id')->on('properties');
-            $table->decimal('property_sales_transaction_price', 15, 2)->unsigned();
+        Schema::create('testmonials', function (Blueprint $table) {
+            $table->increments('testimonial_id');
+            $table->string('testimonial_title', 200);
+            $table->text('testimonial_content');
+            $table->integer('testmonial_user')->unsigned()->index()->nullable();
+            $table->foreign('testimonial_user')->references('user_id')->on('users');
+            $table->boolean('testimonial_active')->default(true);
             $table->datetime('created_date')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->datetime('modified_date')->nullable();
             $table->integer('modified_by')->unsigned()->index()->nullable();
@@ -35,6 +35,6 @@ class CreatePropertySalesTransactionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('property_sales_transactions');
+        Schema::dropIfExists('testmonials');
     }
 }

@@ -20,6 +20,9 @@ class UserTypeTableSeeder extends Seeder
         		],
                 [
                     'user_type_name' => 'Web Master'
+                ],
+                [
+                    'user_type_name' => 'Client'
                 ]
         	]);
     }

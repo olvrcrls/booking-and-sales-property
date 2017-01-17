@@ -24,7 +24,7 @@ class CreateVisitationBookingsTable extends Migration
             $table->boolean('visitation_booking_cancelled')->default(false);
             $table->datetime('created_date')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->datetime('updated_date')->nullable();
-            $table->integer('modified_by')->unsigned()->index();
+            $table->integer('modified_by')->unsigned()->index()->nullable();
             $table->foreign('modified_by')->references('user_id')->on('users');
         });
         Schema::enableForeignKeyConstraints();

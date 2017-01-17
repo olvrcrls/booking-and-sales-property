@@ -50,9 +50,15 @@
                 	</ul> <!-- /. dropdown-menu -->
 	            </li>
                 <li><a href="#"><i class="fa fa-home"></i> Properties</a></li>
-                <li>
-	                <a href="#"><i class="fa fa-money"></i> Property Sales <span class="caret"></span>
+                <li class="dropdown">
+	                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+	                	<i class="fa fa-money"></i> Property Sales <span class="caret"></span>
 	                </a>
+	                <ul class="dropdown-menu">
+	                	<li><a href="#"><i class="fa fa-calendar-o"></i> Visitations</a></li>
+	                	<li><a href="#"><i class="fa fa-money"></i> Transactions</a></li>
+	                	<li><a href="#"><i class="fa fa-"></i></a></li>
+	                </ul>
 	            </li>
                 <li><a href="#"><i class="fa fa-calendar-o"></i> Bookings</a></li>
                 <li><a href="#"><i class="fa fa-tags"></i> Report</a></li>
