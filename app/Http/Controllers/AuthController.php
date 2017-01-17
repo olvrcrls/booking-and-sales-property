@@ -27,5 +27,14 @@ class AuthController extends Controller
     		// invalid request method.
     		abort('405');
     	}
+    } // public function login()
+
+    public function reset()
+    {
+        if (request()->isMethod('get')) {
+            // display reset password view
+        } else if (request()->isMethod('post')) {
+            // validates then resets password
+        }
     }
 }

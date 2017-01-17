@@ -14,7 +14,6 @@ class HomeController extends Controller
 
     public function dashboard()
     {
-    	$this->middleware('auth');
     	return view('admin.dashboard');
     }
 }
