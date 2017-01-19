@@ -36,4 +36,27 @@ class City extends Model
     {
         return $this->belongsTo(\App\Models\Region::class, 'city_region_id', 'region_id');
     }
+
+    /**
+     * Get the city's name.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getCityNameAttribute($value)
+    {
+        return ucwords($value);
+    }
+
+    /**
+     * Set the city's name capitalized
+     *
+     * @param  string  $value
+     * @return void
+     */
+
+    public function setCityNameAttribute($value)
+    {
+        $this->attributes['city_name'] = ucwords($value);
+    }
 }

@@ -10,6 +10,7 @@
 	<!-- styles -->
 	<link rel="stylesheet" href="/css/app.css">
 	<link rel="stylesheet" href="/css/font-awesome.min.css">
+	@yield('styles')
 </head>
 <body>
 <div class="container">
@@ -20,10 +21,11 @@
 		</div> <!-- /.col-md-2 -->
 		<div class="col-md-10">
 			<div class="row">
-				<div class="col-md-12">
-					<div class="page-header">
-						<h3 class="text-muted"><b>@yield('title')</b></h3>
-					</div>
+				<div class="col-md-12 page-header">
+					<h3 class="text-muted">
+						<b>@yield('title')</b>
+						@yield('newBtn')
+					</h3>
 				</div> <!-- /.col-md-12 -->
 			</div> <!-- /.row -->
 		</div>
@@ -31,7 +33,7 @@
 	<div class="row">
 		<div class="col-md-2">
 			<ul class="nav nav-pills nav-stacked">
-                <li class="{{ (Request::is('dashboard') ? 'active' : '') }}">
+                <li {{ (Request::is('dashboard') ? "class=active" : '') }}>
                 	<a href="{{ route('dashboard') }}"><i class="fa fa-bar-chart"></i> Dashboard</a>
                 </li>
                 <li class="dropdown">
@@ -39,11 +41,16 @@
                 		<i class="fa fa-cog"></i> Maintenance <span class="caret"></span>
                 	</a>
                 	<ul class="dropdown-menu">
-                		<li><a href="#"><i class="fa fa-map-marker"></i> Regions</a></li>
-                		<li><a href="#"><i class="fa fa-map-marker"></i> City</a></li>
+                		<li {{ (Request::is('region') ? "class=active" : '') }}>
+                			<a href="{{ route('region.index') }}"><i class="fa fa-map-marker"></i> Regions</a>
+                		</li>
+                		<li {{ (Request::is('city') ? "class=active" : '') }}>
+                			<a href="{{ route('city.index') }}"><i class="fa fa-map-marker"></i> City</a>
+                		</li>
                 		<li><a href="#"><i class="fa fa-lightbulb-o"></i> Feature Types</a></li>
                 		<li><a href="#"><i class="fa fa-lightbulb-o"></i> Property Types</a></li>
                 		<li><a href="#"><i class="fa fa-lightbulb-o"></i> Property Status</a></li>
+                		<li><a href="#"><i class="fa fa-lightbulb-o"></i> Property Amenity</a></li>
                 		<li><a href="#"><i class="fa fa-credit-card"></i> Payment Methods</a></li>
                 		<li><a href="#"><i class="fa fa-bar-chart"></i> Booking Rates</a></li>
                 		<li><a href="#"><i class="fa fa-tag"></i> Online Service Fee</a></li>
@@ -57,7 +64,7 @@
 	                <ul class="dropdown-menu">
 	                	<li><a href="#"><i class="fa fa-calendar-o"></i> Visitations</a></li>
 	                	<li><a href="#"><i class="fa fa-money"></i> Transactions</a></li>
-	                	<li><a href="#"><i class="fa fa-"></i></a></li>
+	                	<li><a href="#"><i class="fa fa-bar-chart"></i> Property Rates</a></li>
 	                </ul>
 	            </li>
                 <li><a href="#"><i class="fa fa-calendar-o"></i> Bookings</a></li>
@@ -82,4 +89,10 @@
 	<!-- scripts -->
 	<script src="/js/jquery.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
+	<script>
+		$(document).ready(function () {
+			$('[data-toggle="tooltip"]').tooltip();
+		});
+	</script>
+	@yield('scripts')
 </html>

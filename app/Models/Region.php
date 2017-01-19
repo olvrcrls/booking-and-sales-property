@@ -23,7 +23,29 @@ class Region extends Model
 
     public function cities()
     {
-    	return $this->hasMany(\App\Models\City::class, 'cities');
+    	return $this->hasMany(\App\Models\City::class, 'city_id');
     }
 
+    /**
+     * Get the region's name.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getRegionNameAttribute($value)
+    {
+        return ucwords($value);
+    }
+
+    /**
+     * Set the regions name capitalized
+     *
+     * @param  string  $value
+     * @return void
+     */
+
+    public function setRegionNameAttribute($value)
+    {
+        $this->attributes['region_name'] = ucwords($value);
+    }
 }
