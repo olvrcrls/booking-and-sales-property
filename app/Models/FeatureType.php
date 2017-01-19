@@ -25,4 +25,26 @@ class FeatureType extends Model
     {
         return $this->hasMany(\App\Models\Feature::class, 'feature_id');
     }
+
+    /**
+     * Get the feature type's name.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getFeatureTypeNameAttribute($value)
+    {
+        return ucwords($value);
+    }
+
+    /**
+     * Set the feature type's name.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function setFeatureTypeNameAtttribue($value)
+    {
+        $this->attributes['feature_type_name'] = ucwords($value);
+    }
 }

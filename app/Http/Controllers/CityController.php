@@ -16,8 +16,8 @@ class CityController extends Controller
     public function __construct()
     {
         // $this->middleware('auth');
-        \Auth::loginUsingId(1);
-        $this->user = \Auth::user()->user_id;
+        // \Auth::loginUsingId(1);
+        // $this->user = \Auth::user()->user_id;
     }
 
     /**
@@ -28,7 +28,7 @@ class CityController extends Controller
     public function index()
     {
         $cities = City::with(['regions' => function ($query) { $query->select(['region_id', 'region_name']); }])
-                        ->select('city_id', 'city_name', 'city_region_id', 'url_slug')
+                        ->select('city_id', 'city_name', 'city_region_id', 'url_slug', 'city_active')
                         ->where('city_active', true)
                         ->orderBy('city_name', 'asc')
                         ->get();
@@ -119,7 +119,7 @@ class CityController extends Controller
                 'city_zip_code' => request('city_zip_code'),
                 'url_slug' => $url_slug,
                 'city_region_id' => request('city_region'),
-                'modified_date' => date('Y-m-d'),
+                'modified_date' => date('Y-m-d h:i:s'),
                 'modified_by' => $this->user
             ]);
         $this->audit("Updated '{$old->city_name}' with new data: 
@@ -140,7 +140,7 @@ class CityController extends Controller
     public function destroy(City $city)
     {
         $city->city_active = false;
-        $city->modified_date = date('Y-m-d');
+        $city->modified_date = date('Y-m-d h:i:s');
         $city->modified_by = $this->user;
         $city->save();
         $this->audit("{$city->city_name} has been removed.");
@@ -156,7 +156,7 @@ class CityController extends Controller
     public function restore(City $city)
     {
         $city->city_active = true;
-        $city->modified_date = date('Y-m-d');
+        $city->modified_date = date('Y-m-d h:i:s');
         $city->modified_by = $this->user;
         $city->save();
         $this->audit("{$city->city_name} has been restored.");

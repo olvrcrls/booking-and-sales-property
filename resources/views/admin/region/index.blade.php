@@ -18,6 +18,7 @@
 			<tr>
 				<td><a href="{{ route('region.show', ['region' => $region]) }}">{{ $region->region_name }}</a></td>
 				<td>
+					@if ($region->region_active)
 					<div class="col-md-3">
 						<a href="{{ route('region.edit', ['region' => $region]) }}">
 							<button class="btn btn-primary" type="submit"
@@ -36,7 +37,19 @@
 								<i class="fa fa-trash"></i>
 							</button>
 						</form>
-					</div>
+					</div> <!-- /.col-md-3 -->
+					@else
+					<div class="col-md-3">
+						<form action="{{ route('region.restore', ['region' => $region]) }}" method="POST">
+							{{ csrf_field() }} {{ method_field('PUT') }}
+							<button class="btn btn-danger" type="submit"
+								data-toggle="tooltip" title="Restore" 
+							>
+								<i class="fa fa-undo"></i>
+							</button>
+						</form>
+					</div> <!-- /.col-md-3 -->
+					@endif
 				</td>
 			</tr>
 			@endforeach

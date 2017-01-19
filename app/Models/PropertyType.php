@@ -25,4 +25,14 @@ class PropertyType extends Model
     {
     	return $this->hasMany(\App\Models\Property::class, 'properties');
     }
+
+    public function getPropertyTypeNameAttribute($value)
+    {
+        return ucwords($value);
+    }
+
+    public function setPropertyTypeNameAttribute($value)
+    {
+        $this->attributes['property_type_name'] = ucwords($value);
+    }
 }

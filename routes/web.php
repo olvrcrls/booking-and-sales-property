@@ -12,5 +12,11 @@ Route::group(['middleware' => 'web'], function () {
 
 		Route::resource('city', 'CityController');
 		Route::put('city/restore/{city}', 'CityController@restore')->name('city.restore');
+
+		Route::resource('feature_type', 'FeatureTypeController');
+		Route::put('feature_type/restore/{feature_type}', 'FeatureTypeController@restore')->name('feature_type.restore');
+
+		Route::resource('property_type', 'PropertyTypeController');
+		Route::put('property_type/restore/{property_type}', 'PropertyTypeController@restore')->name('property_type.restore');
 	// });
 });

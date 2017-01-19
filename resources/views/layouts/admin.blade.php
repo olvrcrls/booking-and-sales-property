@@ -47,8 +47,12 @@
                 		<li {{ (Request::is('city') ? "class=active" : '') }}>
                 			<a href="{{ route('city.index') }}"><i class="fa fa-map-marker"></i> City</a>
                 		</li>
-                		<li><a href="#"><i class="fa fa-lightbulb-o"></i> Feature Types</a></li>
-                		<li><a href="#"><i class="fa fa-lightbulb-o"></i> Property Types</a></li>
+                		<li {{ (Request::is('feature_type') ? "class=active" : '') }}>
+                			<a href="{{ route('feature_type.index') }}"><i class="fa fa-lightbulb-o"></i> Feature Types</a>
+                		</li>
+                		<li {{ (Request::is('property_type') ? "class=active" : '') }}>
+                			<a href="{{ route('property_type.index') }}"><i class="fa fa-lightbulb-o"></i> Property Types</a>
+            			</li>
                 		<li><a href="#"><i class="fa fa-lightbulb-o"></i> Property Status</a></li>
                 		<li><a href="#"><i class="fa fa-lightbulb-o"></i> Property Amenity</a></li>
                 		<li><a href="#"><i class="fa fa-credit-card"></i> Payment Methods</a></li>

@@ -15,6 +15,7 @@ class RegionController extends Controller
     public function __construct()
     {
         // $this->middleware('auth');
+        \Auth::loginUsingId(1);
         $this->user = \Auth::user()->user_id;
     }
 
@@ -25,7 +26,9 @@ class RegionController extends Controller
      */
     public function index()
     {
-        $regions = Region::select('region_id', 'region_name')->where('region_active', true)->orderBy('region_name', 'asc')->get();
+        $regions = Region::select('region_id', 'region_name', 'region_active')
+                    ->where('region_active', true)
+                    ->orderBy('region_name', 'asc')->get();
         return view('admin.region.index', compact('regions'));
     }
 
@@ -100,7 +103,7 @@ class RegionController extends Controller
         $region->update([
                 'region_name' => request('region_name'),
                 'modified_by' => $this->user,
-                'modified_date' => date('Y-m-d')
+                'modified_date' => date('Y-m-d h:i:s')
             ]);
         $this->audit("'{$old->region_name}' has been renamed as '{$region->region_name}'.");
         return redirect()->back()->with('status', "Successfully updated this region.");
