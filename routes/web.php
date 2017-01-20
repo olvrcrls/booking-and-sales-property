@@ -18,5 +18,11 @@ Route::group(['middleware' => 'web'], function () {
 
 		Route::resource('property_type', 'PropertyTypeController');
 		Route::put('property_type/restore/{property_type}', 'PropertyTypeController@restore')->name('property_type.restore');
+
+		Route::resource('property_status', 'PropertyStatusController');
+		Route::put('property_status/restore/{property_status', 'PropertyStatusController@restore')->name('property_status.restore');
+
+		Route::resource('amenity', 'AmenityController');
+		Route::put('amenity/restre/{amenity}', 'AmenityController@restore')->name('amenity.restore');
 	// });
 });

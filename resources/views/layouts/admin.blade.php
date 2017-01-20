@@ -53,8 +53,16 @@
                 		<li {{ (Request::is('property_type') ? "class=active" : '') }}>
                 			<a href="{{ route('property_type.index') }}"><i class="fa fa-lightbulb-o"></i> Property Types</a>
             			</li>
-                		<li><a href="#"><i class="fa fa-lightbulb-o"></i> Property Status</a></li>
-                		<li><a href="#"><i class="fa fa-lightbulb-o"></i> Property Amenity</a></li>
+                		<li {{ (Request::is('property_status') ? "class=active" : '') }}>
+	                		<a href="{{ route('property_status.index') }}">
+	                			<i class="fa fa-lightbulb-o"></i> Property Status
+	            			</a>
+            			</li>
+                		<li {{ (Request::is('amenity') ? "class=active" : '') }}>
+                			<a href="{{ route('amenity.index') }}">
+	                			<i class="fa fa-lightbulb-o"></i> Property Amenity
+                			</a>
+            			</li>
                 		<li><a href="#"><i class="fa fa-credit-card"></i> Payment Methods</a></li>
                 		<li><a href="#"><i class="fa fa-bar-chart"></i> Booking Rates</a></li>
                 		<li><a href="#"><i class="fa fa-tag"></i> Online Service Fee</a></li>

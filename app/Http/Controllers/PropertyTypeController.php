@@ -64,12 +64,12 @@ class PropertyTypeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\PropertyType $property_type
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(PropertyType $property_type)
     {
-        //
+        return view('admin.property_type.show', compact('property_type'));
     }
 
     /**

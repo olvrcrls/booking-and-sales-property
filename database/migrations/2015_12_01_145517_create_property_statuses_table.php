@@ -15,8 +15,8 @@ class CreatePropertyStatusesTable extends Migration
     {
         Schema::create('property_statuses', function (Blueprint $table) {
             $table->increments('property_status_id');
-            $table->string('property_status_name')->unique();
-            $table->text('property_status_description');
+            $table->string('property_status_name',255)->unique();
+            $table->text('property_status_description')->nullable();
             $table->boolean('property_status_active')->default(true);
             $table->datetime('created_date')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->datetime('modified_date')->nullable();

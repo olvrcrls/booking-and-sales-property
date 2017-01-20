@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.maintenance')
 @section('title') Cities @stop
 
 @section('newBtn')

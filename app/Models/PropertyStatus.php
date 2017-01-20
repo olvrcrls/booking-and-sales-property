@@ -25,4 +25,14 @@ class PropertyStatus extends Model
     {
     	return $this->hasMany(\App\Models\Property::class, 'properties');
     }
+
+    public function getPropertyStatusNameAttribute($value)
+    {
+        return ucwords($value);
+    }
+
+    public function setPropertyStatusNameAttribute($value)
+    {
+        $this->attributes['property_status_name'] = ucwords($value);
+    }
 }

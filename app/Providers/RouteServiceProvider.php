@@ -29,6 +29,8 @@ class RouteServiceProvider extends ServiceProvider
         Route::model('city', \App\Models\City::class);
         Route::model('feature_type', \App\Models\FeatureType::class);
         Route::model('property_type', \App\Models\PropertyType::class);
+        Route::model('property_status', \App\Models\PropertyStatus::class);
+        Route::model('amenity', \App\Models\Amenity::class);
     }
 
     /**
