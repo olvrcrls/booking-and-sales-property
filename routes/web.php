@@ -23,6 +23,12 @@ Route::group(['middleware' => 'web'], function () {
 		Route::put('property_status/restore/{property_status', 'PropertyStatusController@restore')->name('property_status.restore');
 
 		Route::resource('amenity', 'AmenityController');
-		Route::put('amenity/restre/{amenity}', 'AmenityController@restore')->name('amenity.restore');
+		Route::put('amenity/restore/{amenity}', 'AmenityController@restore')->name('amenity.restore');
+
+		Route::resource('payment_method', 'PaymentMethodController');
+		Route::put('payment_method/restore/{payment_method}', 'PaymentMethodController@restore')->name('payment_method.restore');
+
 	// });
+		Route::resource('property', 'PropertyController');
+		Route::put('property/restore/{property}', 'PropertyController@restore')->name('property.restore');
 });

@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class PaymentTypeTableSeeder extends Seeder
+class PaymentMethodTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,17 +11,17 @@ class PaymentTypeTableSeeder extends Seeder
      */
     public function run()
     {
-        App\Models\PaymentType::insert([
+        App\Models\PaymentMethod::insert([
         		[
-        			'payment_type_name' => 'Bank Deposit',
+        			'payment_method_name' => 'Bank Deposit',
         			'created_by' => 1
         		],
         		[
-        			'payment_type_name' => 'Credit Card Method / Paypal',
+        			'payment_method_name' => 'Credit Card Method / Paypal',
         			'created_by' => 1
         		],
         		[
-        			'payment_type_name' => 'Cash',
+        			'payment_method_name' => 'Cash',
         			'created_by' => 1
         		]
         	]);

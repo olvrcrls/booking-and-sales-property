@@ -12,7 +12,8 @@ class AmenityController extends Controller
     public function __construct()
     {
         // $this->middleware('auth');
-        // $this->user = \Auth::user()->user_id;
+        \Auth::loginUsingId(1);
+        $this->user = \Auth::user()->user_id;
     }
     /**
      * Display a listing of the resource.
@@ -54,7 +55,7 @@ class AmenityController extends Controller
                 'created_by' => $this->user
             ]);
         $this->audit("A new amenity named '{$new_amenity->amenity_name}' has been created.");
-        return redirect()->back()->with('status', "Successfully created '{$amenity->amenity_name}'.");
+        return redirect()->back()->with('status', "Successfully created '{$new_amenity->amenity_name}'.");
     }
 
     /**

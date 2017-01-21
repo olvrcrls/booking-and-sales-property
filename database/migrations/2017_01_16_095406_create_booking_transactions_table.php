@@ -20,8 +20,8 @@ class CreateBookingTransactionsTable extends Migration
             $table->foreign('booking_transaction_reservation_id')->references('booking_reservation_id')->on('booking_reservations');
             $table->integer('booking_transaction_client_id')->unsigned()->index();
             $table->foreign('booking_transaction_client_id')->references('client_id')->on('clients');
-            $table->integer('booking_transaction_payment_type_id')->unsigned()->index();
-            $table->foreign('booking_transaction_payment_type_id')->references('payment_type_id')->on('payment_types');
+            $table->integer('booking_transaction_payment_method')->unsigned()->index();
+            $table->foreign('booking_transaction_payment_method')->references('payment_method_id')->on('payment_methods');
             $table->datetime('created_date')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->datetime('modified_date')->nullable();
         });

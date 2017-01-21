@@ -31,6 +31,7 @@ class RouteServiceProvider extends ServiceProvider
         Route::model('property_type', \App\Models\PropertyType::class);
         Route::model('property_status', \App\Models\PropertyStatus::class);
         Route::model('amenity', \App\Models\Amenity::class);
+        Route::model('payment_method', \App\Models\PaymentMethod::class);
     }
 
     /**

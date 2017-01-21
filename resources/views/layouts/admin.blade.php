@@ -63,7 +63,11 @@
 	                			<i class="fa fa-lightbulb-o"></i> Property Amenity
                 			</a>
             			</li>
-                		<li><a href="#"><i class="fa fa-credit-card"></i> Payment Methods</a></li>
+                		<li {{ (Request::is('payment_method') ? "class=active" : '' ) }}>
+	                		<a href="{{ route('payment_method.index') }}">
+	                			<i class="fa fa-credit-card"></i> Payment Methods
+                			</a>
+                		</li>
                 		<li><a href="#"><i class="fa fa-bar-chart"></i> Booking Rates</a></li>
                 		<li><a href="#"><i class="fa fa-tag"></i> Online Service Fee</a></li>
                 	</ul> <!-- /. dropdown-menu -->
