@@ -18,4 +18,33 @@ class Client extends Model
     	return $this->table;
     } // static function to return the table name of the Model.
 
+    public function getClientFirstnameAttribute($value)
+    {
+        return ucwords($value);
+    }
+
+    public function setClientFirstnameAttribute($value)
+    {
+        $this->attributes['client_firstname'] = ucwords($value);
+    }
+
+    public function getClientLastnameAttribute($value)
+    {
+        return ucwords($value);
+    }
+
+    public function setClientLastnameAttribute($value)
+    {
+        $this->attributes['client_lastname'] = ucwords($value);
+    }
+
+    public function getClientMiddlenameAttribute($value)
+    {
+        return ucwords($value);
+    }
+
+    public function setClientMiddlenameAttribute($value)
+    {
+        $this->attributes['client_middlename'] = ucwords($value);
+    }
 }

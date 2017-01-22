@@ -29,6 +29,16 @@ class Property extends Model
     	return 'url_slug';
     } // returning the route key name of the Model.
 
+    public function getPropertyNameAttribute($value)
+    {
+        return ucwords($value);
+    }
+
+    public function setPropertyNameAttribute($value)
+    {
+        $this->attributes['property_name'] = ucwords($value);
+    }
+
     public function cities()
     {
     	return $this->belongsTo(\App\Models\City::class, 'property_city_id', 'city_id');

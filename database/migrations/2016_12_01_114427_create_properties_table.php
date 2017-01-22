@@ -20,7 +20,7 @@ class CreatePropertiesTable extends Migration
             $table->integer('property_garage_capacity')->unsigned();
             $table->integer('property_bed_capacity')->unsigned();
             $table->decimal('property_size', 15, 2);
-            $table->decimal('property_price', 15, 2)->nullable();
+            $table->decimal('property_price', 15, 2)->nullable(); // nullable for booking / renting properties
             $table->text('property_description');
             $table->boolean('property_is_sold')->default(false);
             $table->boolean('property_is_occupied')->default(false);

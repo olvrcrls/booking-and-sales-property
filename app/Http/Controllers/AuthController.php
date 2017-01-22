@@ -35,6 +35,22 @@ class AuthController extends Controller
             // display reset password view
         } else if (request()->isMethod('post')) {
             // validates then resets password
+        } else {
+            // invalid request method.
+            abor('405');
+        }
+    }
+
+    public function register()
+    {
+        if (request()->isMethod('get')) {
+            // displays the registration page.
+            return view('auth.register');
+        } else if (request()->isMethod('post')) {
+            // validates the register information
+        } else {
+            // invalid request method.
+            abor('405');
         }
     }
 }

@@ -72,7 +72,7 @@
                 		<li><a href="#"><i class="fa fa-tag"></i> Online Service Fee</a></li>
                 	</ul> <!-- /. dropdown-menu -->
 	            </li>
-                <li><a href="#"><i class="fa fa-home"></i> Properties</a></li>
+                <li><a href="{{ route('property.index') }}"><i class="fa fa-home"></i> Properties</a></li>
                 <li class="dropdown">
 	                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 	                	<i class="fa fa-money"></i> Property Sales <span class="caret"></span>
