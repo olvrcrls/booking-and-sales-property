@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PropertyStatusTableSeeder::class);
         $this->call(PropertyTypeTableSeeder::class);
         $this->call(PaymentMethodTableSeeder::class);
+        $this->call(AmenityTableSeeder::class);
         $this->call(FeatureTypeTableSeeder::class);
         // $this->call(OnlineServiceFeeTableSeeder::class); // uncomment this for initiating a boiler service fee.
         App\AuditTrail::insert([
