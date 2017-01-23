@@ -15,8 +15,8 @@ class RegionController extends Controller
     public function __construct()
     {
         // $this->middleware('auth');
-        \Auth::loginUsingId(1);
-        $this->user = \Auth::user()->user_id;
+        // \Auth::loginUsingId(1);
+        // $this->user = \Auth::user()->user_id;
     }
 
     /**

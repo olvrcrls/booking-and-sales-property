@@ -15,7 +15,7 @@ class CityController extends Controller
      */
     public function __construct()
     {
-        // $this->middleware('auth');
+        // $this->middleware('auth')->except('list');
         // \Auth::loginUsingId(1);
         // $this->user = \Auth::user()->user_id;
     }
@@ -169,5 +169,14 @@ class CityController extends Controller
                 'audit_action' => $action,
                 'audit_user' => $this->user
             ]);
+    }
+
+    // API Function
+    public function list()
+    {
+        return $cities = City::with(['regions' => function ($q) { $q->select(['region_id', 'region_name']); }]) 
+                                ->select('city_id','city_name','city_region_id')
+                                ->where('city_active', true)
+                                ->orderBy('city_name', 'asc')->get();
     }
 }

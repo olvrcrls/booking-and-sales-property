@@ -53,4 +53,10 @@ class AuthController extends Controller
             abor('405');
         }
     }
+
+    public function logout()
+    {
+        \Auth::logout();
+        return redirect()->route('auth.login')->with('status', "Logged out successfully.");
+    }
 }

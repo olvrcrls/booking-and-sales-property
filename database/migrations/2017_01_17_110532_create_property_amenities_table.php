@@ -19,6 +19,7 @@ class CreatePropertyAmenitiesTable extends Migration
             $table->foreign('property_amenity_amenity_id')->references('amenity_id')->on('amenities');
             $table->integer('property_amenity_property_id')->unsigned()->index();
             $table->foreign('property_amenity_property_id')->references('property_id')->on('properties');
+            $table->boolean('property_amenity_active')->default(true);
             $table->datetime('created_date')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->datetime('modified_date')->nullable();
             $table->integer('created_by')->unsigned()->index();

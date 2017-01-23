@@ -17,7 +17,7 @@
 	&nbsp; <br>
 	<div class="row">
 		<div class="col-md-2">
-			<a href="{{ route('index') }}" class="brand-logo"><img src="/fandom.png" alt="logo"></a>
+			<a href="{{ (\Auth::user()) ? route('dashboard') : route('index') }}" class="brand-logo"><img src="/fandom.png" alt="logo"></a>
 		</div> <!-- /.col-md-2 -->
 		<div class="col-md-10">
 			<div class="row">
@@ -90,7 +90,17 @@
 				<li><a href="#"><i class="fa fa-trash"></i> Trash</a></li>
                 <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
                 @if (Auth::check())
-				<li><a href="#"><i class="fa fa-sign-out"></i> Logout</a></li>
+				<li>
+					<a href="{{ route('auth.logout') }}"
+						onclick="event.preventDefault();
+                                         document.getElementById('logout-form').submit();"
+					>
+						<i class="fa fa-sign-out"></i> Logout
+					</a>
+					<form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                    </form>
+				</li>
 				@else
 				<li><a href="#"><i class="fa fa-user-secret"></i> Guest</a></li>
                 @endif

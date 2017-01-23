@@ -5,7 +5,7 @@ Route::get('/', 'HomeController@index')->name('index');
 Route::match(['get', 'post'], '/login', 'AuthController@login')->name('auth.login');
 Route::match(['get', 'post'], '/join', 'AuthController@register')->name('auth.register');
 Route::match(['get', 'post'], '/reset-password', 'AuthController@reset')->name('auth.reset');
-
+Route::post('/logout', 'AuthController@logout')->name('auth.logout');
 // Route::group(['middleware' => ['auth', 'auth.basic', 'adaccess']], function () {
 	Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
 	Route::resource('region', 'RegionController');
