@@ -28,7 +28,7 @@ class PropertyController extends Controller
      */
     public function index()
     {
-         $properties = Property::with(['cities' => function ($q) {
+        $properties = Property::with(['cities' => function ($q) {
                                 $q->select(['city_id', 'city_name', 'city_region_id']);
                             }, 'statuses' => function ($q) {
                                 $q->select(['property_status_id', 'property_status_name']);
@@ -40,10 +40,10 @@ class PropertyController extends Controller
                             }, 'photos' => function ($q) {
                                 $q->select(['property_photo_id', 'property_photo_description', 'file_path']);
                             }])->select('property_name', 'property_id', 'property_size', 'property_price', 'property_bed_capacity', 'property_bath_capacity', 'property_garage_capacity', 'property_description', 'property_is_negotiable',
-                                'property_address', 'property_active', 'property_status_id', 'property_city_id', 'property_type_id', 'url_slug')
+                                'property_address', 'property_active', 'property_status_id', 'property_city_id', 'property_type_id', 'url_slug', 'property_is_occupied', 'property_is_sold', 'property_active')
                                ->where('property_active', true)
                                ->where('property_is_sold', false)
-                               ->orderBy('property_name', 'asc')->get();
+                               ->orderBy('property_type_id', 'asc')->get();
         return view('admin.property.index', compact('properties'));
     }
 
@@ -223,7 +223,12 @@ class PropertyController extends Controller
      */
     public function destroy(Property $property)
     {
-        //code
+        $property->property_active = false;
+        $property->modified_date = date('Y-m-d h:i:s');
+        $property->modified_by = $this->user;
+        $property->save();
+        $this->audit("A property named as '{$property->property_name}' has been removed.");
+        return back();
     }
 
     /**
@@ -234,7 +239,12 @@ class PropertyController extends Controller
      */
     public function restore(Property $property)
     {
-        //code
+        $property->property_active = true;
+        $property->modified_date = date('Y-m-d h:i:s');
+        $property->modified_by = $this->user;
+        $property->save();
+        $this->audit("A property named as '{$property->property_name}' has been restored.");
+        return back();
     }
 
     public function audit($action = '')
