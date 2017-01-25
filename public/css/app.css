@@ -9,6 +9,35 @@
 
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
+.box {
+    float: left;
+    width: 20px;
+      height: 15px;
+      margin: 5px;
+      border: 1px solid rgba(0, 0, 0, .2);
+}
+
+.box-success {
+    background: #3c763d;
+}
+
+.box-warning {
+    background: #8a6d3b;
+}
+
+.box-danger {
+    background: #a94442;
+}
+
+.box-info {
+    background: #31708f;
+}
+
+.box-default {
+    background: transparent;
+}
+
+
 .label,
 sub,
 sup {

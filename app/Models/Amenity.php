@@ -19,7 +19,7 @@ class Amenity extends Model
 
     public function properties()
     {
-    	$this->hasMany(\App\Models\PropertyAmenity::class, 'property_amenity_amenity_id');
+    	$this->belongsTo(\App\Models\PropertyAmenity::class, 'property_amenity_amenity_id');
     }
 
     public function getAmenityNameAttribute($value)

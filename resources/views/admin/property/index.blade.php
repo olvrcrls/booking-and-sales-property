@@ -11,10 +11,18 @@
 <div class="container-fluid">
 	<p>
 		<b>Legends:</b> <br>&nbsp;
-		<span class="text-success" style="padding: 10px 10px;"><i class="fa fa-dollar"></i> Property is Sold</span>
-		<span class="text-warning" style="padding: 10px 10px;"><i class="fa fa-check"></i> Property is Negotiable</span>
-		<span class="text-danger" style="padding: 10px 10px;"><i class="fa fa-remove"></i> Property is Occupied</span>
- 	</p> <br>
+		<div class="col-md-12">
+			<div class="col-md-4">
+				<i class="box box-success"></i><span>Property is sold</span>
+			</div>
+			<div class="col-md-4">
+				<i class="box box-warning"></i><span>Property is Negotiable</span>
+			</div>
+			<div class="col-md-4">
+				<i class="box box-danger"></i><span>Property is Occupied</span>
+			</div>
+		</div>
+ 	</p> <br> &nbsp;
 	<table class="table table-condensed table-responsive" id="propertyTable">
 	<thead>
 		<tr>

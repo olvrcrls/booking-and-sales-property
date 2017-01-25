@@ -64,4 +64,9 @@ class Property extends Model
         return $this->hasMany(\App\Models\PropertyPhoto::class, 'property_photo_id');
     }
 
+    public function amenities()
+    {
+        return $this->hasMany(\App\Models\PropertyAmenity::class, 'property_amenity_property_id');
+    }
+
 }
