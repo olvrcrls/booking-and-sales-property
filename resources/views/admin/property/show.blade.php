@@ -12,6 +12,14 @@
 	<div class="panel panel-{{ ($property->property_active ? "default" : "danger") }}">
 		<div class="panel-heading">
 			<span class="panel-title"><b>{{ $property->property_name }} {{ ($property->property_active ? "" : "(REMOVED)") }}</b></span>
+			<span>[ <i>{{ $property->types->property_type_name }}</i> ]</span>
+			<a href="{{ route('property.edit', ['property' => $property]) }}">
+				<button class="btn btn-default btn-sm pull-right"
+						data-toggle="tooltip" title="Edit property" 
+				>
+					<i class="fa fa-edit"></i>
+				</button>
+			</a>
 		</div>
 		<div class="panel-body">
 			<div class="row">
@@ -27,12 +35,20 @@
 			<div class="row">
 				<div class="col-md-12">
 					<label for="address" class="control-label"><i class="fa fa-map-marker"></i> Property Address:</label>
-					<div class="well well-sm">
+					<div class="well well-sm" id="address">
 						<b>
 							{{ $property->property_address }}, {{ $property->cities->city_name }}, {{ $property->cities->regions->region_name }}
 						</b>
 					</div> <!-- /.well well-sm -->
 				</div> <!-- /.col-md-12 -->
+			</div> <!-- /.row -->
+			<div class="row">
+				<div class="col-md-12">
+					<label for="price" class="control-label"><i class="fa fa-dollar"></i> Property Pricing</label>
+					<div class="well well-sm" id="price">
+						<h4>$ <b class="text-success"> {{ number_format($property->property_price, 2) }}</b></h4>
+					</div>
+				</div>
 			</div> <!-- /.row -->&nbsp;
 			<div class="row">
 				<div class="col-md-3">
@@ -52,26 +68,56 @@
 					<span id="bath" class="well well-sm"><b>{{ $property->property_garage_capacity }} space(s)</b></span>
 				</div> <!-- /.col-md-4 -->
 			</div> <!-- /.row --> &nbsp;
-			<div class="row">
+			<div class="row"> <!-- AMENITIES -->
 				<div class="col-md-12">
 					<label class="control-label"><i class="fa fa-bookmark"></i> Amenity:</label>
-				</div>
+					<a href="#">
+					<button class="btn btn-sm btn-default pull-right" data-toggle="tooltip"
+							title="Add a new amenity" 
+						>
+							<i class="fa fa-plus"></i>
+					</button>
+					</a>
+				</div>&nbsp;
+				@if ($property->amenities->count())
 				<div class="col-md-12">
-					<div class="col-md-6">
-						<ul class="list-group">
-							<li class="list-group-item"><i class="fa fa-wifi"></i> Wi-Fi Connection</li>
-							<li class="list-group-item"><i class="fa fa-wifi"></i> Wi-Fi Connection</li>
-							<li class="list-group-item"><i class="fa fa-wifi"></i> Wi-Fi Connection</li>
-						</ul>
-					</div>
-					<div class="col-md-6">
-						<ul class="list-group">
-							<li class="list-group-item"><i class="fa fa-wifi"></i> Wi-Fi Connection</li>
-							<li class="list-group-item"><i class="fa fa-wifi"></i> Wi-Fi Connection</li>
-							<li class="list-group-item"><i class="fa fa-wifi"></i> Wi-Fi Connection</li>
-						</ul>
+					<ul class="list-group">
+						@foreach($property->amenities->all() as $amenity)
+						<li class="list-group-item">{{ $amenity->amenity_name }}</li>
+						@endforeach
+					</ul>
+				</div>
+				@else
+				<div class="col-md-12">
+					<div class="well well-sm">
+						<h5 class="text-muted"><b>No amenities assigned for this property, yet.</b></h5>
 					</div>
 				</div>
+				@endif
+			</div> <!-- /.row --> &nbsp;
+			<div class="row">
+				<div class="col-md-12">
+					<label class="control-label"><i class="fa fa-image"></i> Photos</label>
+					<a href="#">
+						<button class="btn btn-sm btn-default pull-right"
+								data-toggle="tooltip" title="Upload images for this property." 
+						>
+							<i class="fa fa-upload"></i>
+						</button>
+					</a>
+				</div> &nbsp;
+				@if ($property->photos->count())
+				<div class="col-md-12">
+					Photos
+					{{-- Photo carousel with thumbnails here --}}
+				</div>
+				@else
+				<div class="col-md-12">
+					<div class="well well-sm">
+						<h5 class="text-muted"><b>No photo images for this property, yet.</b></h5>
+					</div>
+				</div>
+				@endif
 			</div> <!-- /.row -->
 		</div> <!-- /.panel-body -->
 	</div> <!-- /.panel panel-default -->
