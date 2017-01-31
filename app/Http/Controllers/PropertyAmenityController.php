@@ -12,7 +12,6 @@ class PropertyAmenityController extends Controller
     protected $user;
 	/**
 	 * Class Constructor
-	 * @param    $user   
 	 */
 	public function __construct()
 	{
@@ -33,7 +32,7 @@ class PropertyAmenityController extends Controller
 					'property' => 'required|numeric',
 					'selectedAmenities' => 'array'
 			]);
-			if ($this->checkChangeParameters()) {
+			if (!$this->hasAmenityParameters()) {
 				return ["message" => "There is nothing to change."];
 			}
 			$property = $this->getPropertyAmenities(request("property"));
@@ -44,7 +43,7 @@ class PropertyAmenityController extends Controller
 			* if it is re-assigned or being removed.
 			*/
 			if (!$property->count()) {
-				$this->assignAmenities(request("selectedAmenities"));
+				return $this->assignAmenities(request("selectedAmenities"));
 			} else {
 				$this->checkAssignments($property, request("selectedAmenities"), request("unselectedAmenities"));
 			}
@@ -56,7 +55,7 @@ class PropertyAmenityController extends Controller
 
 	public function checkAssignments(PropertyAmenity $property, array $selectedAmenities, array $unselectedAmenities)
 	{
-		# code...
+		// code..
 	}
 
 	/**
@@ -66,6 +65,7 @@ class PropertyAmenityController extends Controller
 	*/
 	public function assignAmenities(array $amenities)
 	{
+		try {
 		foreach ($amenities as $amenity) {
 					PropertyAmenity::insert([
 							'property_amenity_property_id' => request('property'),
@@ -73,6 +73,10 @@ class PropertyAmenityController extends Controller
 							'created_by' => $this->user
 						]);
 				} // foreach
+				return ["message" => "Successfully assigned new amenities."];
+		} catch (Exception $e) {
+				return ["message" => "Failure to assign new amenities."];
+		}
 	}
 
 	/**
@@ -92,9 +96,9 @@ class PropertyAmenityController extends Controller
 	* action with the form.
 	*
 	*/
-	public function checkChangeParameters()
+	public function hasAmenityParameters()
 	{
-		return ((!request("selectedAmenities") && !request("unselectedAmenities")) ? true : false);
+		return ((request("selectedAmenities") || request("unselectedAmenities")) ? true : false);
 	}
 
 	public function audit($action = '')

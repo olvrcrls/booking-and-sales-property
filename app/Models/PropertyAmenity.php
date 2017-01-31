@@ -18,11 +18,11 @@ class PropertyAmenity extends Model
 
     public function amenities()
     {
-    	return $this->belongsTo(App\Models\Amenity::class, 'property_amenity_amenity_id', 'property_amenity_amenity_id');
+    	return $this->belongsTo(\App\Models\Amenity::class, 'property_amenity_amenity_id', 'amenity_id');
     }
 
     public function properties()
     {
-    	return $this->belongsTo(App\Models\Property::class, 'property_amenity_property_id', 'property_amenity_property_id');
+    	return $this->belongsTo(\App\Models\Property::class, 'property_amenity_property_id', 'property_id');
     }
 }

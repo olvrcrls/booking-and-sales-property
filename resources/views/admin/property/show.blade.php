@@ -97,10 +97,17 @@
 										<div class="form-group" v-for="(amenity, index) in amenities">
 											<div class="checkbox">
 													<label>
+													@foreach ($property->property_amenities->all() as $property_amenity)
 														<input type="checkbox" :value="amenity.amenity_id"
+																@click.self="toggleAmenity($event)"
+																v-if="isAlreadyAssigned(amenity.amenity_id, {{ $property_amenity->amenities->amenity_id}})" 
+																checked
+														>
+														<input v-else type="checkbox" :value="amenity.amenity_id"
 																@click.self="toggleAmenity($event)"
 														>
 														@{{ amenity.amenity_name }}
+													@endforeach
 													</label>
 											</div>
 										</div>
@@ -118,11 +125,11 @@
 						</div>
 					</div> <!-- /.modal fade -->
 				</div>&nbsp;
-				@if ($property->amenities->count())
+				@if ($property->property_amenities->count())
 				<div class="col-md-12">
 					<ul class="list-group">
-						@foreach($property->amenities->all() as $amenity)
-						<li class="list-group-item">{{ $amenity->amenity_name }}</li>
+						@foreach($property->property_amenities->all() as $property_amenity)
+						<li class="list-group-item"><i class="fa fa-hashtag"></i> {{ $property_amenity->amenities->amenity_name }}</li>
 						@endforeach
 					</ul>
 				</div>

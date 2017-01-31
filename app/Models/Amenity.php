@@ -17,9 +17,9 @@ class Amenity extends Model
     	'amenity_active' => 'boolean',
     ];
 
-    public function properties()
+    public function property_amenities()
     {
-    	$this->belongsTo(\App\Models\PropertyAmenity::class, 'property_amenity_amenity_id');
+        $this->hasMany('\App\Models\PropertyAmenity', 'property_amenity_amenity_id');
     }
 
     public function getAmenityNameAttribute($value)

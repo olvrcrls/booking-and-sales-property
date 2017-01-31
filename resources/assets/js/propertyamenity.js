@@ -62,5 +62,12 @@ const vm = new Vue({
 				this.unselectedAmenities.push(event.target.value)
 			}
 		},
+		/**
+		* Checks if the amenity is already assigned 
+		* to the property.
+		*/
+		isAlreadyAssigned(assignedAmenity, amenity) {
+			return assignedAmenity === amenity
+		}
 	},
 });

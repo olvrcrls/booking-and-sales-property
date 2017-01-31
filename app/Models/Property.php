@@ -61,12 +61,12 @@ class Property extends Model
 
     public function photos()
     {
-        return $this->hasMany(\App\Models\PropertyPhoto::class, 'property_photo_id');
+        return $this->hasMany('\App\Models\PropertyPhoto', 'property_photo_property_id');
     }
 
-    public function amenities()
+    public function property_amenities()
     {
-        return $this->hasMany(\App\Models\PropertyAmenity::class, 'property_amenity_property_id');
+        return $this->hasMany('\App\Models\PropertyAmenity', 'property_amenity_property_id');
     }
 
 }
