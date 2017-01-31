@@ -16,3 +16,6 @@ use Illuminate\Http\Request;
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
+
+Route::get('/amenities/list', 'AmenityController@list');
+Route::post('/amenities/save', 'PropertyAmenityController@save');

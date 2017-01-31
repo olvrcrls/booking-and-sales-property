@@ -41,43 +41,82 @@
 						</b>
 					</div> <!-- /.well well-sm -->
 				</div> <!-- /.col-md-12 -->
-			</div> <!-- /.row -->
+			</div> <!-- /.row --> &nbsp;
 			<div class="row">
-				<div class="col-md-12">
-					<label for="price" class="control-label"><i class="fa fa-dollar"></i> Property Pricing</label>
-					<div class="well well-sm" id="price">
-						<h4>$ <b class="text-success"> {{ number_format($property->property_price, 2) }}</b></h4>
-					</div>
-				</div>
-			</div> <!-- /.row -->&nbsp;
-			<div class="row">
-				<div class="col-md-3">
-					<label class="control-label"><i class="fa fa-arrows-alt"></i> Size</label>
-					<span class="well well-sm"><b>{{ number_format($property->property_size,2) }} SQ. M.</b></span>
-				</div>
-				<div class="col-md-3">
-					<label for="bath" class="control-label"><i class="fa fa-bath"></i> Bath:</label>
+				<div class="col-md-4">
+					<label for="bath" class="control-label"><i class="fa fa-bath"></i> Bath Room(s):</label>
 					<span id="bath" class="well well-sm"><b>{{ $property->property_bath_capacity }} space(s)</b></span>
 				</div> <!-- /.col-md-4 -->
-				<div class="col-md-3">
-					<label for="bed" class="control-label"><i class="fa fa-bed"></i> Bed:</label>
+				<div class="col-md-4">
+					<label for="bed" class="control-label"><i class="fa fa-bed"></i> Bed Room(s):</label>
 					<span id="bed" class="well well-sm"><b>{{ $property->property_bed_capacity }} space(s)</b></span>
 				</div> <!-- /.col-md-4 -->
-				<div class="col-md-3">
+				<div class="col-md-4">
 					<label for="garage" class="control-label"><i class="fa fa-car"></i> Garage:</label>
 					<span id="bath" class="well well-sm"><b>{{ $property->property_garage_capacity }} space(s)</b></span>
 				</div> <!-- /.col-md-4 -->
 			</div> <!-- /.row --> &nbsp;
+			<div class="row">
+				<div class="col-md-6">
+					<label for="price" class="control-label"><i class="fa fa-dollar"></i> Property Pricing</label>
+					<div class="well well-sm" id="price">
+						<span>$ <b class="text-success"> {{ number_format($property->property_price, 2) }}</b></span>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<label class="control-label"><i class="fa fa-arrows-alt"></i> Size</label>
+					<div class="well well-sm" id="price">
+						<span><b>{{ number_format($property->property_size,2) }} SQ. M.</b></span>
+					</div>
+				</div>
+			</div> <!-- /.row -->&nbsp;
 			<div class="row"> <!-- AMENITIES -->
 				<div class="col-md-12">
 					<label class="control-label"><i class="fa fa-bookmark"></i> Amenity:</label>
-					<a href="#">
 					<button class="btn btn-sm btn-default pull-right" data-toggle="tooltip"
-							title="Add a new amenity" 
+							title="Add a new amenity" type="button" @click="toggleAmenityModal()"
+							data-toggle="modal" data-target="amenityModal"
 						>
 							<i class="fa fa-plus"></i>
 					</button>
-					</a>
+					<div class="modal fade" id="amenityModal" tabindex="-1" role="dialog"
+						 labelledby="amenityModalLabel"
+					>
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button class="close" type="button" data-dismiss="modal" arial-label="Close"
+									> <span aria-hidden="true">&times;</span>
+									</button>
+									<h4 class="modal-title" id="amenityModalLabel">
+										<b>List Of Amenities <i class="fa fa-cutlery"></i></b>
+									</h4>
+								</div> <!-- /.modal-header- -->
+								<div class="modal-body">
+									<form accept-charset="utf-8" action="" method="POST"> {{ csrf_field() }}
+										<div class="form-group" v-for="(amenity, index) in amenities">
+											<div class="checkbox">
+													<label>
+														<input type="checkbox" :value="amenity.amenity_id"
+																@click.self="toggleAmenity($event)"
+														>
+														@{{ amenity.amenity_name }}
+													</label>
+											</div>
+										</div>
+									</form>
+								</div> <!-- /.modal-body -->
+								<div class="modal-footer">
+									<button type="button" class="btn btn-success pull-left"
+										data-toggle="tooltip" title="Click here to save assigment." 
+										@click="saveAmenity({{ $property->property_id }})"
+									>
+										<b>Save</b>
+									</button>
+								</div> <!-- /.modal-footer -->
+							</div> <!-- /.modal-content -->
+						</div>
+					</div> <!-- /.modal fade -->
 				</div>&nbsp;
 				@if ($property->amenities->count())
 				<div class="col-md-12">
@@ -119,7 +158,39 @@
 				</div>
 				@endif
 			</div> <!-- /.row -->
+			<div class="row">
+				<div class="col-md-12">
+					<label for="information" class="control-label"><i class="fa fa-cog"></i> Other Information</label>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="well well-sm">
+								<ul>
+									<li>
+										<b>
+										{{ ($property->property_is_negotiable ? "This property has negotiable price." : "This property is not negotiable.")}}
+										</b>
+									</li>
+									<li>
+										<b>
+										{{ ($property->property_is_occupied ? "This property is currently occupied." : "This property is not being occupied.")}}
+										</b>
+									</li>
+									<li>
+										<b>
+										{{ ($property->property_is_sold ? "This property is sold." : "This property is not yet sold.")}}
+										</b>
+									</li>
+								</ul>
+							</div> <!-- /.well well-sm -->
+						</div> <!-- /.col-md-12 -->
+					</div> <!-- /.row -->
+				</div>
+			</div> <!--/.row -->
 		</div> <!-- /.panel-body -->
 	</div> <!-- /.panel panel-default -->
 </div> <!-- /.container-fluid -->
+@stop
+
+@section('scripts')
+<script src="/js/vue/property_amenity.js"></script>
 @stop

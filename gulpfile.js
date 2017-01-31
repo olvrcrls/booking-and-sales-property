@@ -1,9 +1,9 @@
 const elixir = require('laravel-elixir');
 require('laravel-elixir-vue-2');
 
-// elixir(mix => {
-//     mix.webpack('app.js');
-// });
+elixir(mix => {
+    mix.webpack('propertyamenity.js', 'public/js/vue/property_amenity.js');
+});
 
 elixir( mix => {
 	mix.copy('node_modules/datatables.net/js/jquery.dataTables.js', 'public/js/dataTables.js')

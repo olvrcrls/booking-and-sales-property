@@ -11,9 +11,9 @@
     <meta property="og:url" content="{{ Request::fullUrl() }}" />
     <meta property="og:title" content="@yield('title')" />
     <meta property="fb:app_id" content="{{ config('app.fb_app_id') }}" />
-	<meta content="description" name="{{ config('app.name') }}. Home Property Sales, Check-in and Check-out rooms and property of vacations.">
-	<meta content="keywords" name="Property,Vacation,Check in,Check out,Property Sales.">
-	<meta content="author" name="{{ config('app.author') }}">
+	<meta name="description" content="{{ config('app.name') }}. Home Property Sales, Check-in and Check-out rooms and property of vacations.">
+	<meta name="keywords" content="Property,Vacation,Check in,Check out,Property Sales.">
+	<meta name="author" content="{{ config('app.author') }}">
 
 	<title>@yield('title')</title>
 	<!-- styles -->

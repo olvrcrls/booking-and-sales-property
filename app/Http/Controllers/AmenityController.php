@@ -144,4 +144,12 @@ class AmenityController extends Controller
                 'audit_user' => $this->user
             ]);
     }
+
+    // API Functions
+    public function list()
+    {
+        return $amenities = Amenity::select('amenity_id', 'amenity_name')
+                            ->where('amenity_active', true)
+                            ->orderBy('amenity_name', 'asc')->get();
+    }
 }
