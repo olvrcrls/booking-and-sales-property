@@ -26,7 +26,20 @@
 					<h3 class="text-muted">
 						<b>@yield('title')</b>
 						@yield('newBtn')
+						<div class="text-center" style="margin-top: -25px;">
+							<a href="#!" style="padding-right: 10px;"
+								data-toggle="tooltip" title="Client Request Notifications" 
+							><i class="fa fa-bell text-center"></i> <span class="badge">1</span></a>
+							<a href="#!" style="padding-right: 10px;"
+								data-toggle="tooltip" title="New Scheduled Bookings" 
+							>
+							<i class="fa fa-calendar-o"></i> <span class="badge">3</span></a>
+							<a href="#!" style="padding-right: 10px;"
+								data-toggle="tooltip" title="Property Reviews" 
+							><i class="fa fa-comments text-center"></i> <span class="badge">105</span></a>
+						</div>
 					</h3>
+
 				</div> <!-- /.col-md-12 -->
 			</div> <!-- /.row -->
 		</div>

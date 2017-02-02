@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title') {{ str_limit($property->property_name,80) }} ( {{ $property->types->property_type_name }} ) @stop
+@section('title') {{ str_limit($property->property_name,80) }} @stop
 
 @section('newBtn')
 <a href="{{ route('property.index') }}">
