@@ -25,7 +25,7 @@
 </div> <!-- /.row -->
 <div class="row pull-center">
 	<h3 class="text-muted text-center"><u><b>PROPERTY STATISTICS</b></u></h3> <br>
-	<div class="col-md-4 col-md-offset-1 well well-sm">
+	<div class="col-md-5 well well-sm">
 		<h4 class="text-center"><b>VISITS</b></h4>
 		<ul class="list-group">
 			<li class="list-group-item">
@@ -67,7 +67,7 @@
 			</li>
 		</ul>
 	</div>
-	<div class="col-md-4 col-md-offset-2 well well-sm">
+	<div class="col-md-5 col-md-offset-2 well well-sm">
 		<h4 class="text-center"><b>REVENUES</b></h4>
 		<ul class="list-group">
 			<li class="list-group-item">

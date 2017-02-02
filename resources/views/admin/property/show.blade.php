@@ -1,6 +1,10 @@
 @extends('layouts.admin')
 @section('title') {{ str_limit($property->property_name,80) }} @stop
 
+@section('styles')
+<link rel="stylesheet" href="/css/lightslider.css">
+@stop
+
 @section('newBtn')
 <a href="{{ route('property.index') }}">
 	<button class="btn btn-default pull-right"><i class="fa fa-arrow-left"></i> Back</button>
@@ -236,6 +240,7 @@
 
 @section('scripts')
 <script src="/js/vue/propertyModals.js"></script>
+<script src="/js/lightslider.min.js"></script>
 <script>
 	$(document).ready(function () {
 			function readURL(input) {

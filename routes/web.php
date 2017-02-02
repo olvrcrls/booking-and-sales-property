@@ -31,4 +31,11 @@ Route::post('/logout', 'AuthController@logout')->name('auth.logout');
 
 	Route::resource('property', 'PropertyController');
 	Route::put('property/restore/{property}', 'PropertyController@restore')->name('property.restore');
+
+	Route::get('/properties/houses-for-rent', function () {
+		return view('admin.property.rental_houses');
+	})->name('admin.housesForRent');
+	Route::get('/properties/houses-for-sale', function () {
+		return view('admin.property.sale_houses');
+	})->name('admin.housesForSale');
 // });
