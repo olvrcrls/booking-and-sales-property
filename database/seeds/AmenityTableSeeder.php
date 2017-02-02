@@ -24,6 +24,7 @@ class AmenityTableSeeder extends Seeder
          		],
          		[
         			'amenity_name' => "No Pets Allowed",
+                    'amenity_description' => "No Description.",
         			'created_by' => 1
          		],
          		[

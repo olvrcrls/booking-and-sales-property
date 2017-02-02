@@ -19,3 +19,4 @@ Route::get('/user', function (Request $request) {
 
 Route::get('/amenities/list', 'AmenityController@list');
 Route::post('/amenities/save', 'PropertyAmenityController@save');
+Route::get('/property/{property}/amenities', 'PropertyAmenityController@getPropertyAmenities');

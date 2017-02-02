@@ -131,7 +131,14 @@ class PropertyController extends Controller
      */
     public function show(Property $property)
     {
-        return view('admin.property.show', compact('property'));
+        $amenities = \App\Models\Amenity::select('amenity_id', 'amenity_name')
+                                         ->orderBy('amenity_name', 'asc')->where('amenity_active', true)
+                                         ->get();
+        $property_amenities = \App\Models\PropertyAmenity::select('property_amenity_amenity_id', 'property_amenity_active')
+                                            ->orderBy('property_amenity_amenity_id', 'asc')
+                                            ->where('property_amenity_property_id', $property->property_id)
+                                            ->get();
+        return view('admin.property.show', compact('property', 'property_amenities', 'amenities'));
     }
 
     /**

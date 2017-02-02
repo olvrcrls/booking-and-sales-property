@@ -9,6 +9,7 @@ class PropertyAmenity extends Model
     protected $table = 'property_amenities';
     protected $primaryKey = 'property_amenity_id';
     protected $guarded = [];
+    public $timestamps = false;
     public $dates = [
     	'created_date', 'modified_date'
     ];

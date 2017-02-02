@@ -94,23 +94,21 @@
 								</div> <!-- /.modal-header- -->
 								<div class="modal-body">
 									<form accept-charset="utf-8" action="" method="POST"> {{ csrf_field() }}
-										<div class="form-group" v-for="(amenity, index) in amenities">
+										@foreach ($amenities as $amenity)
+										<div class="form-group">
 											<div class="checkbox">
-													<label>
-													@foreach ($property->property_amenities->all() as $property_amenity)
-														<input type="checkbox" :value="amenity.amenity_id"
-																@click.self="toggleAmenity($event)"
-																v-if="isAlreadyAssigned(amenity.amenity_id, {{ $property_amenity->amenities->amenity_id}})" 
-																checked
-														>
-														<input v-else type="checkbox" :value="amenity.amenity_id"
-																@click.self="toggleAmenity($event)"
-														>
-														@{{ amenity.amenity_name }}
-													@endforeach
-													</label>
+												<label>
+													<input type="checkbox" value="{{ $amenity->amenity_id }}"
+														@click.self="toggleAmenity($event)"
+														@foreach ($property_amenities as $property_amenity)
+														{{ ($property_amenity->property_amenity_amenity_id === $amenity->amenity_id) ? "checked" : "" }}
+														@endforeach
+													>
+													{{ $amenity->amenity_name }}
+												</label>
 											</div>
-										</div>
+										</div> <!-- /.form-group -->
+										@endforeach
 									</form>
 								</div> <!-- /.modal-body -->
 								<div class="modal-footer">
