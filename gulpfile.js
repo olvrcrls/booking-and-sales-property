@@ -2,7 +2,7 @@ const elixir = require('laravel-elixir');
 require('laravel-elixir-vue-2');
 
 elixir(mix => {
-    mix.webpack('propertyamenity.js', 'public/js/vue/property_amenity.js');
+    mix.webpack('propertyModals.js', 'public/js/vue/propertyModals.js');
 });
 
 elixir( mix => {

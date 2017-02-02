@@ -37,7 +37,7 @@
                 <li {{ (Request::is('dashboard') ? "class=active" : '') }}>
                 	<a href="{{ route('dashboard') }}"><i class="fa fa-bar-chart"></i> Dashboard</a>
                 </li>
-                <li><a href="{{ route('property.index') }}"><i class="fa fa-home"></i> Properties</a></li>
+                <li {{ (Request::is('property') ? "class=active" : '') }}><a href="{{ route('property.index') }}"><i class="fa fa-home"></i> Properties</a></li>
                 <li><a href="#"><i class="fa fa-home"></i> Houses For Rent</a></li>
                 <li><a href="#"><i class="fa fa-home"></i> Houses For Sale</a></li>
                 <li><a href="#"><i class="fa fa-calendar-o"></i> Bookings</a></li>

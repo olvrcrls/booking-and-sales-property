@@ -120,7 +120,7 @@
 									</button>
 								</div> <!-- /.modal-footer -->
 							</div> <!-- /.modal-content -->
-						</div>
+						</div> <!-- /.modal-dialog -->
 					</div> <!-- /.modal fade -->
 				</div>&nbsp;
 				@if ($property->property_amenities->count())
@@ -142,13 +142,51 @@
 			<div class="row">
 				<div class="col-md-12">
 					<label class="control-label"><i class="fa fa-image"></i> Photos</label>
-					<a href="#">
-						<button class="btn btn-sm btn-default pull-right"
-								data-toggle="tooltip" title="Upload images for this property." 
+					<button class="btn btn-sm btn-default pull-right"
+								data-toggle="tooltip" title="Upload images for this property."
+								@click="toggleUploadModal()"
 						>
 							<i class="fa fa-upload"></i>
-						</button>
-					</a>
+					</button>
+					<div class="modal fade" id="uploadModal"
+						 tabindex="-1" labelledby="uploadModalLabel" 
+					>
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button class="close" type="button" data-dismiss="modal" arial-label="Close"
+									> <span aria-hidden="true">&times;</span>
+									</button>
+									<h4 class="modal-title" id="uploadModalLabel">
+										<b>Upload a Property Photo <i class="fa fa-upload"></i></b>
+									</h4>
+								</div> <!-- /.modal-header- -->
+								<div class="modal-body">
+									<form accept-charset="utf-8" action="" method="POST"
+										enctype="" class="form-horizontal" 
+									> {{ csrf_field() }}
+										<div class="form-group">
+											<div class="col-md-12">
+												<label for="upload" class="control-label">Image File Upload <i class="fa fa-image"></i></label>
+												<input type="file" name="upload" id="upload" accept="image/*" class="form-control" />
+											</div> &nbsp;
+											<div class="col-md-12">
+												<label for="image_preview" class="control-label">Preview:</label><br><br>
+												<img src="" alt="Property Image" class="img-responsive" id="image_preview" />
+											</div>
+										</div>
+									</form>
+								</div> <!-- /.modal-body -->
+								<div class="modal-footer">
+									<button type="button" class="btn btn-success pull-left"
+										data-toggle="tooltip" title="Upload photo." 
+									>
+										<b>Upload</b>
+									</button>
+								</div> <!-- /.modal-footer -->
+							</div> <!-- /.modal-content -->
+						</div> <!-- /.modal-dialog -->
+					</div> <!-- #uploadModal -->
 				</div> &nbsp;
 				@if ($property->photos->count())
 				<div class="col-md-12">
@@ -182,7 +220,7 @@
 									</li>
 									<li>
 										<b>
-										{{ ($property->property_is_sold ? "This property is sold." : "This property is not yet sold.")}}
+										{{ ($property->property_is_sold ? "This property is sold." : "This property is not yet sold.") }}
 										</b>
 									</li>
 								</ul>
@@ -197,5 +235,21 @@
 @stop
 
 @section('scripts')
-<script src="/js/vue/property_amenity.js"></script>
+<script src="/js/vue/propertyModals.js"></script>
+<script>
+	$(document).ready(function () {
+			function readURL(input) {
+				if (input.files && input.files[0]) {
+					var reader = new FileReader();
+					reader.onload = function (e) {
+						$("#image_preview").attr('src', e.target.result);
+					}// reader.onload function
+					reader.readAsDataURL(input.files[0]);
+				} // if
+			} // readURL function
+			$('#upload').on('change', function () {
+				readURL(this);
+			});			
+		});
+</script>
 @stop
