@@ -5,9 +5,9 @@ let propertySalesCanvas = document.getElementById('propertySales');
 let expensesSalesCanvas = document.getElementById('expenses');
 let examplePropertyBookingsData = {
     labels: [
-        "December",
-        "January",
-        "February"
+        "Example Property",
+        "One Property",
+        "Two Property"
     ],
     datasets: [
         {
